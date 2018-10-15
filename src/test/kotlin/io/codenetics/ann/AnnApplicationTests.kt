@@ -17,14 +17,13 @@ class AnnApplicationTests {
 
     @Test
     fun checkBasicSum() {
-        val neuron1 = Neuron.createWithSumFunction({ input -> input * 2 })
-        val neuron2 = Neuron.createWithSumFunction({ input -> input * 3 })
+        val inputNeuron = Neuron.createWithSumFunction({ 100.0 })
+        val neuron2 = Neuron.createWithSumFunction({ input -> input * 1 })
+        val neuron3 = Neuron.createWithSumFunction({ input -> input * 1 })
 
-        val conn1 = NeuronConnection(neuron1, neuron2, 0.9)
+        NeuronConnection(inputNeuron, neuron2, 1.0)
+        NeuronConnection(neuron2, neuron3, 1.0)
 
-        neuron1.outConnections.add(conn1)
-        neuron2.inConnections.add(conn1)
-
-        println("Neuron 2 output : ${neuron2.getOutput()}")
+        assert(neuron3.getOutput() == 100.0)
     }
 }
