@@ -2,12 +2,11 @@ package io.codenetics.ann.domain
 
 import java.util.*
 
-class Neuron {
+class Neuron(var inConnections: MutableList<NeuronConnection>,
+             var outConnections: MutableList<NeuronConnection>,
+             var sumFunction: ((List<NeuronConnection>) -> Double),
+             var activationFunction: ((Double) -> Double)) {
     var id: String = UUID.randomUUID().toString()
-    var inConnections: List<NeuronConnection> = emptyList()
-    var outConnections: List<NeuronConnection> = emptyList()
-    var sumFunction: ((List<NeuronConnection>) -> Double) = { 0.0 }
-    var activationFunction: ((Double) -> Double) = { 0.0 }
 
 
     fun getOutput(): Double {
@@ -15,4 +14,11 @@ class Neuron {
         return activationFunction(totalInput)
     }
 
+    companion object {
+        fun createWithSumFunction(activationFunction: ((Double) -> Double),
+                                  inConnections: MutableList<NeuronConnection> = mutableListOf(),
+                                  outConnections: MutableList<NeuronConnection> = mutableListOf()): Neuron {
+            return Neuron(inConnections, outConnections, { connections -> connections.sumByDouble { conn -> conn.getWeightedInput() } }, activationFunction)
+        }
+    }
 }
