@@ -1,7 +1,3 @@
-/*
- * Copyright Rhonda Software Ltd. 2018.
- * All rights reserved.
- */
 
 package io.codenetics.ann.web.filter
 
