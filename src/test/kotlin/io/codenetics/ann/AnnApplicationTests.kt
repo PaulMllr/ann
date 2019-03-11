@@ -11,9 +11,6 @@ import org.springframework.test.context.junit4.SpringRunner
 @SpringBootTest
 class AnnApplicationTests {
 
-    @Test
-    fun contextLoads() {
-    }
 
     @Test
     fun checkBasicSum() {
