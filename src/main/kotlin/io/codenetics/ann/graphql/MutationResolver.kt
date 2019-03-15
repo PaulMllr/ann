@@ -2,6 +2,8 @@ package io.codenetics.ann.graphql
 
 import com.coxautodev.graphql.tools.GraphQLMutationResolver
 import io.codenetics.ann.graphql.dto.NeuronDto
+import io.codenetics.ann.service.NeuronService
+import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 
 /**
@@ -10,7 +12,12 @@ import org.springframework.stereotype.Service
 @Service
 class MutationResolver : GraphQLMutationResolver {
 
+    @Autowired
+    lateinit var neuronService: NeuronService
+
     fun addNeuron(id: String): NeuronDto {
-        return NeuronDto(id)
+        // Ignoring the 'id' parameter temporarily
+        val neuron = neuronService.saveNeuron()
+        return NeuronDto(neuron.id)
     }
 }
