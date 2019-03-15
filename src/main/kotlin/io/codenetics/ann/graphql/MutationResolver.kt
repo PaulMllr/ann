@@ -15,8 +15,7 @@ class MutationResolver : GraphQLMutationResolver {
     @Autowired
     lateinit var neuronService: NeuronService
 
-    fun addNeuron(id: String): NeuronDto {
-        // Ignoring the 'id' parameter temporarily
+    fun addNeuron(): NeuronDto {
         val neuron = neuronService.saveNeuron()
         return NeuronDto(neuron.id)
     }

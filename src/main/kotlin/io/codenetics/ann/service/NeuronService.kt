@@ -20,6 +20,8 @@ class NeuronService {
         return neuronDao.save(neuron)
     }
 
+    fun findNeuronById(id: String) = neuronDao.findByIdsIn(listOf(id)).firstOrNull()
+
     fun findNeuronsByIdIn(ids: List<String>) = neuronDao.findByIdsIn(ids)
 
 

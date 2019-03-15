@@ -1,5 +1,6 @@
 package io.codenetics.ann.dao
 
+import io.codenetics.ann.domain.Neuron
 import io.codenetics.ann.domain.NeuronConnection
 
 /**
@@ -9,5 +10,5 @@ interface NeuronConnectionDao {
 
     fun save(connection: NeuronConnection): NeuronConnection
 
-    fun findAllByFromNeuronId(id: String): List<NeuronConnection>
+    fun findAllByFromNeuron(neuron: Neuron): List<NeuronConnection>
 }

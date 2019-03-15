@@ -16,5 +16,5 @@ type Query {
 
 # The Root Mutation for the application
 type Mutation {
-    addNeuron(id: String!) : Neuron!
+    addNeuron : Neuron!
 }
