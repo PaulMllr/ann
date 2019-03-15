@@ -1,0 +1,20 @@
+type Neuron {
+    id: String!
+}
+
+type Connection {
+    from: String!
+    to: String!
+    weight: Float!
+}
+
+# The Root Query for the application
+type Query {
+    neuronsInfo(ids: [String]!): [Neuron]!
+    connectionsFromNeuron(neuronId: String): [Connection]!
+}
+
+# The Root Mutation for the application
+type Mutation {
+    addNeuron(id: String!) : Neuron!
+}
