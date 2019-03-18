@@ -20,6 +20,7 @@ class QueryResolver : GraphQLQueryResolver {
     @Autowired
     lateinit var connectionService: NeuronConnectionService
 
+    
     fun getNeuronsInfo(ids: List<String>) = neuronService.findNeuronsByIdIn(ids).map { NeuronDto(it.id) }
 
     fun getConnectionsFromNeuron(neuronId: String): List<ConnectionDto> {

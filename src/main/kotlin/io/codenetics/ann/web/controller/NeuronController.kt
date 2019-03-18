@@ -1,5 +1,7 @@
 package io.codenetics.ann.web.controller
 
+import io.codenetics.ann.service.NeuronService
+import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.GetMapping
@@ -11,6 +13,10 @@ import javax.servlet.http.HttpServletRequest
 @RestController()
 @RequestMapping("/neurons")
 class NeuronController {
+
+    @Autowired
+    lateinit var neuronService: NeuronService
+
 
     @GetMapping
     fun getAllNeurons(request: HttpServletRequest): ResponseEntity<Map<String, Any>> {

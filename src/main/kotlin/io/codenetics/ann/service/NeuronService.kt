@@ -15,9 +15,10 @@ class NeuronService {
     @Autowired
     lateinit var neuronDao: NeuronDao
 
+
     fun saveNeuron(): Neuron {
-        val neuron = Neuron(mutableListOf(), mutableListOf(), { 1.0 }, { 1.0 })
-        return neuronDao.save(neuron)
+        return neuronDao.save(
+                Neuron(mutableListOf(), mutableListOf(), { 1.0 }, { 1.0 }))
     }
 
     fun findNeuronById(id: String) = neuronDao.findByIdsIn(listOf(id)).firstOrNull()
