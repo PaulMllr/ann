@@ -41,19 +41,12 @@ repositories {
 
 
 dependencies {
-	implementation('org.springframework.boot:spring-boot-starter')
+	implementation'org.springframework.boot:spring-boot-starter'
+	implementation 'org.springframework.boot:spring-boot-starter-web:2.0.5.RELEASE'
+	implementation 'com.graphql-java:graphql-spring-boot-starter:5.0.2'
+	implementation 'com.graphql-java:graphql-java-tools:5.2.4'
 	
-	// https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-web
-	implementation group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: '2.0.5.RELEASE'
-
-	// https://mvnrepository.com/artifact/com.graphql-java/graphql-spring-boot-starter
-	implementation group: 'com.graphql-java', name: 'graphql-spring-boot-starter', version: '5.0.2'
-
-	// https://mvnrepository.com/artifact/com.graphql-java/graphql-java-tools
-	implementation group: 'com.graphql-java', name: 'graphql-java-tools', version: '5.2.4'
-
-	
-	implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
-	implementation("org.jetbrains.kotlin:kotlin-reflect")
-	testImplementation('org.springframework.boot:spring-boot-starter-test')
+	implementation 'org.jetbrains.kotlin:kotlin-stdlib-jdk8'
+	implementation 'org.jetbrains.kotlin:kotlin-reflect'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
