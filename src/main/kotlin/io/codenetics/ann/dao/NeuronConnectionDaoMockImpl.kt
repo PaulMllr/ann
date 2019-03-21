@@ -2,9 +2,12 @@ package io.codenetics.ann.dao
 
 import io.codenetics.ann.domain.Neuron
 import io.codenetics.ann.domain.NeuronConnection
+import org.springframework.beans.factory.annotation.Qualifier
 import org.springframework.stereotype.Component
+import java.util.*
 
 @Component
+@Qualifier("Mock")
 class NeuronConnectionDaoMockImpl : NeuronConnectionDao {
     override fun save(connection: NeuronConnection): NeuronConnection {
         TODO("not implemented")

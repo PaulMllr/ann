@@ -2,10 +2,18 @@ package io.codenetics.ann.domain
 
 import java.util.*
 
-class Neuron(var inConnections: MutableList<NeuronConnection>,
+class Neuron(var description: String?,
+             var inConnections: MutableList<NeuronConnection>,
              var outConnections: MutableList<NeuronConnection>,
              var sumFunction: ((List<NeuronConnection>) -> Double),
              var activationFunction: ((Double) -> Double)) {
+
+    constructor(inConnections: MutableList<NeuronConnection>,
+                outConnections: MutableList<NeuronConnection>,
+                sumFunction: ((List<NeuronConnection>) -> Double),
+                activationFunction: ((Double) -> Double)) :
+            this(null, inConnections, outConnections, sumFunction, activationFunction)
+
     var id: String = UUID.randomUUID().toString()
 
 

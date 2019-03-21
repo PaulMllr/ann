@@ -3,6 +3,7 @@ package io.codenetics.ann.service
 import io.codenetics.ann.dao.NeuronConnectionDao
 import io.codenetics.ann.domain.Neuron
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.beans.factory.annotation.Qualifier
 import org.springframework.stereotype.Service
 
 /**
@@ -13,6 +14,7 @@ import org.springframework.stereotype.Service
 class NeuronConnectionService {
 
     @Autowired
+    @Qualifier("InMemory")
     lateinit var connectionDao: NeuronConnectionDao
 
     fun getAllConnectionFromNeuron(neuron: Neuron) = connectionDao.findAllByFromNeuron(neuron)

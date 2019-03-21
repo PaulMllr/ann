@@ -1,6 +1,7 @@
 package io.codenetics.ann.graphql
 
 import com.coxautodev.graphql.tools.GraphQLMutationResolver
+import io.codenetics.ann.graphql.dto.AddNeuronRequest
 import io.codenetics.ann.graphql.dto.NeuronDto
 import io.codenetics.ann.service.NeuronService
 import org.springframework.beans.factory.annotation.Autowired
@@ -15,8 +16,8 @@ class MutationResolver : GraphQLMutationResolver {
     @Autowired
     lateinit var neuronService: NeuronService
 
-    fun addNeuron(): NeuronDto {
-        val neuron = neuronService.saveNeuron()
-        return NeuronDto(neuron.id)
+    fun addNeuron(request: AddNeuronRequest): NeuronDto {
+        val neuron = neuronService.createNewNeuron(request.description)
+        return NeuronDto(neuron.id, neuron.description)
     }
 }

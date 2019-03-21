@@ -6,6 +6,7 @@ import io.codenetics.ann.domain.Neuron
  *  Created by Pavel Laktiushkin on 15.03.2019
  */
 interface NeuronDao {
+    fun findAll(): List<Neuron>
 
     fun save(neuron: Neuron): Neuron
 

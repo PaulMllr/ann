@@ -20,15 +20,24 @@ class QueryResolver : GraphQLQueryResolver {
     @Autowired
     lateinit var connectionService: NeuronConnectionService
 
-    
-    fun getNeuronsInfo(ids: List<String>) = neuronService.findNeuronsByIdIn(ids).map { NeuronDto(it.id) }
+
+    fun getNeuronsInfo(ids: List<String>?): List<NeuronDto> {
+        val neurons = if (ids != null) {
+            neuronService.findNeuronsByIdIn(ids)
+        } else {
+            neuronService.findAllNeurons()
+        }
+
+        return neurons.map { NeuronDto(it.id, it.description) }
+
+    }
 
     fun getConnectionsFromNeuron(neuronId: String): List<ConnectionDto> {
         val neuron = neuronService.findNeuronById(neuronId)
         // TODO: check if the neuron is null a throw an exception
         return if (neuron != null) {
             connectionService.getAllConnectionFromNeuron(neuron)
-                    .map { ConnectionDto(it.from.id, it.to.id, it.weight) }
+                    .map { ConnectionDto(it.id, it.from.id, it.to.id, it.weight) }
         } else {
             emptyList()
         }

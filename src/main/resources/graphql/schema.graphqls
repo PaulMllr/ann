@@ -1,20 +1,32 @@
-type Neuron {
+interface Node {
     id: String!
 }
 
-type Connection {
+type Neuron implements Node {
+    id: String!
+    description(makeUpperCase: Boolean): String
+}
+
+type Connection implements Node{
+    id: String!
     from: String!
     to: String!
     weight: Float!
 }
 
+input CreateNeuronInput {
+    description: String
+    connections: [String]
+}
+
+
 # The Root Query for the application
 type Query {
-    neuronsInfo(ids: [String]!): [Neuron]!
+    neuronsInfo(ids: [String]): [Neuron]!
     connectionsFromNeuron(neuronId: String): [Connection]!
 }
 
 # The Root Mutation for the application
 type Mutation {
-    addNeuron : Neuron!
+    addNeuron(input: CreateNeuronInput!) : Neuron!
 }
