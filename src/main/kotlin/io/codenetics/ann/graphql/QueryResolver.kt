@@ -15,10 +15,10 @@ import org.springframework.stereotype.Service
 class QueryResolver : GraphQLQueryResolver {
 
     @Autowired
-    lateinit var neuronService: NeuronService
+    protected lateinit var neuronService: NeuronService
 
     @Autowired
-    lateinit var connectionService: NeuronConnectionService
+    protected lateinit var connectionService: NeuronConnectionService
 
 
     fun getNeuronsInfo(ids: List<String>?): List<NeuronDto> {
@@ -28,15 +28,18 @@ class QueryResolver : GraphQLQueryResolver {
             neuronService.findAllNeurons()
         }
 
-        return neurons.map { NeuronDto(it.id, it.description) }
-
+        return neurons.map { n ->
+            NeuronDto(
+                    n.id,
+                    n.description)
+        }
     }
 
     fun getConnectionsFromNeuron(neuronId: String): List<ConnectionDto> {
         val neuron = neuronService.findNeuronById(neuronId)
         // TODO: check if the neuron is null a throw an exception
         return if (neuron != null) {
-            connectionService.getAllConnectionFromNeuron(neuron)
+            connectionService.getAllConnectionsFromNeuron(neuron)
                     .map { ConnectionDto(it.id, it.from.id, it.to.id, it.weight) }
         } else {
             emptyList()

@@ -13,7 +13,7 @@ class NeuronDaoMockImpl : NeuronDao {
     override fun findAll() = emptyList<Neuron>()
 
     override fun findByIdsIn(ids: List<String>) = ids.map {
-        val neuron = Neuron(mutableListOf(), mutableListOf(), { 1.0 }, { 1.0 })
+        val neuron = Neuron( { 1.0 }, { 1.0 })
         neuron.id = it
         neuron
     }

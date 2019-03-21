@@ -5,17 +5,4 @@ package io.codenetics.ann.graphql.dto
  */
 data class NeuronDto(
         val id: String,
-        val description: String?) {
-
-    fun getDescription(makeUpperCase: Boolean): String? {
-        return if (description != null) {
-            if (makeUpperCase) {
-                description.toUpperCase()
-            } else {
-                description
-            }
-        } else {
-            null
-        }
-    }
-}
+        val description: String?)

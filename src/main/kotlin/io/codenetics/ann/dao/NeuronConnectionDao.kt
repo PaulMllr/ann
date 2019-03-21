@@ -11,4 +11,6 @@ interface NeuronConnectionDao {
     fun save(connection: NeuronConnection): NeuronConnection
 
     fun findAllByFromNeuron(neuron: Neuron): List<NeuronConnection>
+
+    fun findAllByFromNeuron(neuronId: String): List<NeuronConnection>
 }

@@ -22,4 +22,6 @@ class NeuronConnectionDaoInMemoryImpl : NeuronConnectionDao {
 
     override fun findAllByFromNeuron(neuron: Neuron) = data.filter { it.from == neuron }
 
+    override fun findAllByFromNeuron(neuronId: String) = data.filter { it.from.id == neuronId }
+
 }

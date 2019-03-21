@@ -14,10 +14,11 @@ import org.springframework.stereotype.Service
 class MutationResolver : GraphQLMutationResolver {
 
     @Autowired
-    lateinit var neuronService: NeuronService
+    protected lateinit var neuronService: NeuronService
 
     fun addNeuron(request: AddNeuronRequest): NeuronDto {
-        val neuron = neuronService.createNewNeuron(request.description)
-        return NeuronDto(neuron.id, neuron.description)
+        val neuron = neuronService.createNewNeuron(request.description, request.connections)
+        return NeuronDto(neuron.id,
+                neuron.description)
     }
 }

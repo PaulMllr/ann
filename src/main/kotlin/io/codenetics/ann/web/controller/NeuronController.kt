@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletRequest
 class NeuronController {
 
     @Autowired
-    lateinit var neuronService: NeuronService
+    protected lateinit var neuronService: NeuronService
 
 
     @GetMapping

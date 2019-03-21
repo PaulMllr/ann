@@ -15,10 +15,14 @@ class NeuronConnectionDaoMockImpl : NeuronConnectionDao {
 
     override fun findAllByFromNeuron(neuron: Neuron): List<NeuronConnection> {
 
-        val mockNeuron1 = Neuron(mutableListOf(), mutableListOf(), { 1.0 }, { 1.0 })
-        val mockNeuron2 = Neuron(mutableListOf(), mutableListOf(), { 1.0 }, { 1.0 })
+        val mockNeuron1 = Neuron( { 1.0 }, { 1.0 })
+        val mockNeuron2 = Neuron( { 1.0 }, { 1.0 })
         return listOf(
                 NeuronConnection(neuron, mockNeuron1, 0.2),
                 NeuronConnection(neuron, mockNeuron2, 0.7))
+    }
+
+    override fun findAllByFromNeuron(neuronId: String): List<NeuronConnection> {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 }

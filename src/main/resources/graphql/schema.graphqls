@@ -5,6 +5,7 @@ interface Node {
 type Neuron implements Node {
     id: String!
     description(makeUpperCase: Boolean): String
+    connections: [Connection]
 }
 
 type Connection implements Node{

@@ -14,9 +14,9 @@ class AnnApplicationTests {
 
     @Test
     fun checkBasicSum() {
-        val inputNeuron = Neuron.createWithSumFunction({ 100.0 })
-        val neuron2 = Neuron.createWithSumFunction({ input -> input * 1 })
-        val neuron3 = Neuron.createWithSumFunction({ input -> input * 1 })
+        val inputNeuron = Neuron.createWithSumFunction { 100.0 }
+        val neuron2 = Neuron.createWithSumFunction { input -> input * 1 }
+        val neuron3 = Neuron.createWithSumFunction { input -> input * 1 }
 
         NeuronConnection(inputNeuron, neuron2, 1.0)
         NeuronConnection(neuron2, neuron3, 1.0)

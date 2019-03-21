@@ -3,18 +3,16 @@ package io.codenetics.ann.domain
 import java.util.*
 
 class Neuron(var description: String?,
-             var inConnections: MutableList<NeuronConnection>,
-             var outConnections: MutableList<NeuronConnection>,
              var sumFunction: ((List<NeuronConnection>) -> Double),
              var activationFunction: ((Double) -> Double)) {
 
-    constructor(inConnections: MutableList<NeuronConnection>,
-                outConnections: MutableList<NeuronConnection>,
-                sumFunction: ((List<NeuronConnection>) -> Double),
+    constructor(sumFunction: ((List<NeuronConnection>) -> Double),
                 activationFunction: ((Double) -> Double)) :
-            this(null, inConnections, outConnections, sumFunction, activationFunction)
+            this(null, sumFunction, activationFunction)
 
     var id: String = UUID.randomUUID().toString()
+    var inConnections = mutableListOf<NeuronConnection>()
+    var outConnections = mutableListOf<NeuronConnection>()
 
 
     fun getOutput(): Double {
@@ -23,10 +21,9 @@ class Neuron(var description: String?,
     }
 
     companion object {
-        fun createWithSumFunction(activationFunction: ((Double) -> Double),
-                                  inConnections: MutableList<NeuronConnection> = mutableListOf(),
-                                  outConnections: MutableList<NeuronConnection> = mutableListOf()): Neuron {
-            return Neuron(inConnections, outConnections, { connections -> connections.sumByDouble { conn -> conn.getWeightedInput() } }, activationFunction)
+        fun createWithSumFunction(activationFunction: ((Double) -> Double)): Neuron {
+            return Neuron({ connections -> connections.sumByDouble { conn -> conn.getWeightedInput() } },
+                    activationFunction)
         }
     }
 }
