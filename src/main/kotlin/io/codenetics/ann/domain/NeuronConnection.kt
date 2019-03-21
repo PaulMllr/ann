@@ -25,4 +25,12 @@ data class NeuronConnection(var from: Neuron, var to: Neuron, var weight: Double
             this.add(connection)
         }
     }
+
+    override fun equals(other: Any?): Boolean {
+        return other is NeuronConnection && id == other.id
+    }
+
+    override fun hashCode(): Int {
+        return id.hashCode()
+    }
 }

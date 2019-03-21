@@ -20,6 +20,14 @@ class Neuron(var description: String?,
         return activationFunction(totalInput)
     }
 
+    override fun equals(other: Any?): Boolean {
+        return other is Neuron && id == other.id
+    }
+
+    override fun hashCode(): Int {
+        return id.hashCode()
+    }
+
     companion object {
         fun createWithSumFunction(activationFunction: ((Double) -> Double)): Neuron {
             return Neuron({ connections -> connections.sumByDouble { conn -> conn.getWeightedInput() } },
