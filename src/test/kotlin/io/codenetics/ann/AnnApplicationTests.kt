@@ -21,6 +21,8 @@ class AnnApplicationTests {
         NeuronConnection(inputNeuron, neuron2, 1.0)
         NeuronConnection(neuron2, neuron3, 1.0)
 
+
+
         assert(neuron3.getOutput() == 100.0)
     }
 }
